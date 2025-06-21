@@ -1,0 +1,52 @@
+# docker-compose.yml
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel-app
+    #container_name: laravel-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - mysql-db
+    networks:
+      - jobhunter-ai
+  web-server:
+    image: nginx:stable-alpine
+    #container_name: laravel-web-server
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - jobhunter-ai
+  mysql-db:
+    image: mysql:8.0
+    #container_name: laravel-mysql-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jobhunter-ai-db
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+    volumes:
+      - jobhunter-ai:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - jobhunter-ai
+
+volumes:
+  jobhunter-ai:
+
+networks:
+  jobhunter-ai:
+    driver: bridge
