@@ -1,5 +1,5 @@
 
-# JobHunber-AI
+# JobHunter-AI
 
   
 
