@@ -62,3 +62,12 @@ yarn-error.log*
 
 # Misc
 .env.testing
+
+# Puppeteer / Browsershot cache
+.cache/
+
+# npm global config/cache
+.npm/
+
+# user config folder (if it ends up in your project)
+.config/
