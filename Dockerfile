@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    poppler-utils \
+    && rm -rf /var/lib/apt/lists/*
 
 # 2. Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd

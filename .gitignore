@@ -48,6 +48,9 @@ yarn-error.log*
 /public/css/*.map
 /public/js/*.map
 
+# files used for the projects like CVs an other user related files for dev purpose mostly
+/public/files
+
 # Coverage reports
 /coverage/
 /phpunit-coverage/
