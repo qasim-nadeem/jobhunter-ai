@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Services\AI;
+
+use App\Prism\Schemas\ResumeOptimizationPromptSchema;
+use App\Prism\Schemas\ResumeSchema;
+use App\Services\ResumeOptimizationSevice;
 use Prism\Prism\Prism;
 use Prism\Prism\Enums\Provider;
 use Prism\Prism\Schema\ObjectSchema;

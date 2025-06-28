@@ -11,3 +11,6 @@ Route::get('/openai', [AIController::class, 'CallAI']);
 Route::get('/pdftotext', [PdfToTextController::class, 'index']);
 
 Route::get('/resume', [ResumeGenerationController::class, 'index']);
+
+
+Route::get('/optimize-resume', [AIController::class, 'OptimizeResume']);
