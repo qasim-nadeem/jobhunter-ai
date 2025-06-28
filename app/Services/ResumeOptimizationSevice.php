@@ -42,6 +42,9 @@ class ResumeOptimizationSevice
         ->withSchema($resumeSchema)
          ->withMessages([
             new SystemMessage('You are a professional resume write, you will receive a resume text and a job description text, you need to optimize the resume bsed on the job descriotion, need to modify the resume in a way so that it achieve the hieghst ATS scrores, and pass the ATS check for that job description.'),
+            new SystemMessage('Must find languages that are mentioned in the provided resume'),
+            new SystemMessage('you can add if any skill with level basic, that is missing on the resume but required in job description.'),
+            new SystemMessage('you can also tweak the responsibility in the current or past experience where is suits to match the work experience required in the job description.'),
             new UserMessage("Original Resume:\n\n{$resumeText}"),
             new UserMessage("Job Description:\n\n{$jobDecription}"),
         ])

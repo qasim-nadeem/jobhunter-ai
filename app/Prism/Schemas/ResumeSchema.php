@@ -19,6 +19,7 @@ class ResumeSchema
             description: 'Primary contact details for the candidate',
             properties: [
                 new StringSchema('full_name', 'Candidate’s full legal name'),
+                new StringSchema('title', 'job title of the candidate'),
                 new StringSchema('email', 'Primary email address'),
                 new StringSchema('phone', 'Primary phone number'),
                 new StringSchema('address', 'Mailing address', nullable: true),
@@ -50,6 +51,7 @@ class ResumeSchema
                 new StringSchema('start_date', 'Start date in YYYY-MM format'),
                 new StringSchema('end_date', 'End date in YYYY-MM format or "Present"'),
                 new NumberSchema('gpa', 'Grade Point Average on a 4.0 scale', nullable: true),
+                new NumberSchema('country', 'Country from where the candidate got this education degree', nullable: true),
             ],
             requiredFields: ['institution', 'degree', 'start_date', 'end_date']
         );
@@ -124,6 +126,11 @@ class ResumeSchema
                 new StringSchema('title', 'Project title'),
                 new StringSchema('description', 'Brief project description'),
                 new ArraySchema(
+                    name: 'responsibilities',
+                    description: 'Key responsibilities or achievements or work done in this project',
+                    items: new StringSchema('responsibility', 'A single responsibility or achievement or work done on the project')
+                ),
+                new ArraySchema(
                     name: 'technologies',
                     description: 'Technologies or tools used',
                     items: new StringSchema('tech', 'A single technology or tool')
@@ -178,7 +185,8 @@ class ResumeSchema
                 'education',
                 'work_experience',
                 'skills',
-                'projects'
+                'projects',
+                'languages',
             ]
         );
 
