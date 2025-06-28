@@ -10,7 +10,7 @@ class PdfToTextController extends Controller
     public function index()
     {
         // get the pdf file from public dir
-        $cv = public_path('files/resumes/cv.pdf');
+        $cv = public_path('files/resumes/cv-ui-ux.pdf');
         //initialise the pdftotext text and get the text from pdf
         $text = (new Pdf())
             ->setPdf($cv)

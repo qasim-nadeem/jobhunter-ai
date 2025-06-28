@@ -45,6 +45,7 @@ class ResumeOptimizationSevice
             new SystemMessage('Must find languages that are mentioned in the provided resume'),
             new SystemMessage('you can add if any skill with level basic, that is missing on the resume but required in job description.'),
             new SystemMessage('you can also tweak the responsibility in the current or past experience where is suits to match the work experience required in the job description.'),
+            new SystemMessage('You must get all the work experience available in the resume, and if need to change it a bit to mache the Job description do it'),
             new UserMessage("Original Resume:\n\n{$resumeText}"),
             new UserMessage("Job Description:\n\n{$jobDecription}"),
         ])
