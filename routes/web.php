@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AIController;
 use App\Http\Controllers\PdfToTextController;
+use App\Http\Controllers\Resume\ResumeUploadController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ResumeGenerationController;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,7 @@ Route::get('/resume/medium/pdf', [ResumeController::class, 'mediumPdf']);
 
 //test pdf generation of a midium style blade based static resume
 Route::get('/resume/simple/pdf', [ResumeController::class, 'simplePdf']);
+
+//form to upload resume to be optimized by AI
+Route::get('/resume/upload', [ResumeUploadController::class, 'index'])->name('resume.upload.form');
+Route::post('/resume/upload/post', [ResumeUploadController::class, 'post'])->name('resume.upload.post');
