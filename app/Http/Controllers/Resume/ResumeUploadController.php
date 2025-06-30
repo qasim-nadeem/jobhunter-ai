@@ -20,14 +20,18 @@ class ResumeUploadController extends Controller
         $file = $request->file('resume');
         // dd($file);
 
-        Resume::create([
+        //create entry in DB
+        $resume = Resume::create([
             'session_id'    => session()->getId(),
             'user_id'       => null,
             'title'         => $file->getClientOriginalName(),
         ]);
 
-        echo 'File Created';
+        //upload file
+        $resume->addMediaFromRequest('resume')->toMediaCollection('resume', 'local');
 
-        return "file Created";
+        return $resume->getMedia('resume')->first()->getUrl();
+
+        return "file Created and uploaded";
     }
 }

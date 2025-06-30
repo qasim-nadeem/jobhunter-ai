@@ -14,6 +14,7 @@ services:
       - ./:/var/www:delegated
       - ./node_modules:/var/www/node_modules
       - ./puppeteer-cache:/var/www/.cache/puppeteer
+      - media:/var/www/storage/app/public
     environment:
       # ensure the same envs at runtime (for Browsershot → Puppeteer-Core)
       - HOME=/var/www
@@ -55,6 +56,7 @@ volumes:
   jobhunter-ai:
   node_modules:
   puppeteer-cache:
+  media:
 networks:
   jobhunter-ai:
     driver: bridge

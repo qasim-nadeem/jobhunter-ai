@@ -82,7 +82,8 @@ RUN composer install --optimize-autoloader --no-dev
 # 7. Generate optimized files (optional)
 RUN php artisan key:generate \
  && php artisan config:cache \
- && php artisan route:cache
+ && php artisan route:cache \
+ && php artisan storage:link
 
 # 🔟 Fix permissions
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache /var/www/.cache
