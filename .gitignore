@@ -71,3 +71,6 @@ yarn-error.log*
 
 # user config folder (if it ends up in your project)
 .config/
+
+# local cahced files
+.local/

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Resume;
 
 use App\Http\Controllers\Controller;
+use App\Models\Resume;
 use Illuminate\Http\Request;
 
 class ResumeUploadController extends Controller
@@ -16,7 +17,17 @@ class ResumeUploadController extends Controller
     //recieve the uploaded resume file from the browser
     public function post(Request $request)
     {
-        dd($request->files->all());
-        return view('resume.resumeUploadForm');
+        $file = $request->file('resume');
+        // dd($file);
+
+        Resume::create([
+            'session_id'    => session()->getId(),
+            'user_id'       => null,
+            'title'         => $file->getClientOriginalName(),
+        ]);
+
+        echo 'File Created';
+
+        return "file Created";
     }
 }
